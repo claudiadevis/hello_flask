@@ -16,3 +16,13 @@ proporciona Flask. Este servidor **NO SIRVE para poner una
 aplicación pública en internet en modo PRODUCCIÓN**.
 Solamente sirve en el escenario en el que estamos
 desarrollando localmente nuestra aplicación.
+
+## Variables de entorno
+
+- Linux / Mac
+  export FLASK_APP=hola
+  export FLASK_DEBUG=True
+
+- Windows
+  set FLASK_APP=hola
+  set FLASK_DEBUG=True
