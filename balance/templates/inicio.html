@@ -13,19 +13,25 @@
   <nav>Inicio | Nuevo</nav>
 
   <main>
+
     <table>
+
       <tr>
         <th>Fecha</th>
         <th>Concepto</th>
         <th>Tipo</th>
         <th>Cantidad</th>
       </tr>
+
+      {% for m in movs %}
       <tr>
-        <td>11/11/2024</td>
-        <td>Libro de programación en Python</td>
-        <td>G</td>
-        <td>39.95</td>
+        <td>{{ m.fecha }}</td>
+        <td>{{ m.concepto }}</td>
+        <td>{{ m.ingreso_gasto }}</td>
+        <td>{{ m.cantidad }}</td>
       </tr>
+      {% endfor %}
+
     </table>
   </main>
 

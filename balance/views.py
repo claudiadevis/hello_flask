@@ -1,5 +1,6 @@
 from flask import render_template
 
+from .models import ListaMovimientos
 from . import app
 
 
@@ -8,7 +9,9 @@ def home():
     """
     Muestra la lista de movimientos cargados.
     """
-    return render_template('inicio.html')
+    lista = ListaMovimientos()
+    lista.leer_desde_archivo()
+    return render_template('inicio.html', movs=lista.movimientos)
 
 
 @app.route('/nuevo')
