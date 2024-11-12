@@ -5,17 +5,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Balance - Lista de movimientos</title>
+  <link rel="stylesheet" href="static/css/flat-remix.css">
   <link rel="stylesheet" href="static/css/styles.css">
 </head>
 
 <body>
   <header>Balance de movimientos</header>
 
-  <nav id="main-menu">Inicio | Nuevo</nav>
+  <nav class="navbar">
+    <a>Inicio</a>
+    |
+    <a href="/nuevo">Nuevo</a>
+  </nav>
 
-  <main id="main">
+  <main class="main">
 
-    <table>
+    <h1>Lista de movimientos</h1>
+
+    <table class="paper tabla">
 
       <tr class="fila">
         <th class="cabecera fecha">Fecha</th>
@@ -36,7 +43,7 @@
     </table>
   </main>
 
-  <footer>KeepCoding Bootcamp Cero XXII. Noviembre 2024.</footer>
+  <footer class="footer">KeepCoding Bootcamp Cero XXII. Noviembre 2024.</footer>
 </body>
 
 </html>

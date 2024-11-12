@@ -1,21 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
-
-* {
-  font-family: "Sour Gummy", sans-serif;
-}
-
 header {
-  margin: 50px;
-  margin-bottom: 80px;
-  margin: 50px;
-  margin-bottom: 80px;
+  background-color: #b8174c;
+  color: #f0f0f0;
+  height: 50px;
+  line-height: 50px;
+  padding-left: 20px;
+  font-size: large;
 }
 
-#main-menu {
-  border: solid 1px lightgray;
+.navbar {
+  background-color: #19a187;
+  color: #f0f0f0;
+  height: 25px;
+  line-height: 25px;
+  padding-left: 20px;
 }
 
-.cabecera,
-.dato {
-  border: solid 1px lightgray;
+.navbar a,
+.navbar a:link,
+.navbar a:visited,
+.navbar a:hover,
+.navbar a:active,
+.navbar a:focus {
+  color: #f0f0f0;
+}
+
+.main {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+.tabla {
+  width: 100%;
+  margin: 0;
+}
+
+.footer {
+  padding: 20px;
+  border-top: solid thin #b8174c;
 }
