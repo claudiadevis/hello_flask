@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  font-family: "Sour Gummy", sans-serif;
+}
+
+header {
+  margin: 50px;
+  margin-bottom: 80px;
+  margin: 50px;
+  margin-bottom: 80px;
+}
+
+#main-menu {
+  border: solid 1px lightgray;
+}
+
+.cabecera,
+.dato {
+  border: solid 1px lightgray;
+}
