@@ -35,8 +35,14 @@
       <tr class="fila">
         <td class="dato">{{ m.fecha }}</td>
         <td class="dato">{{ m.concepto }}</td>
-        <td class="dato">{{ m.ingreso_gasto }}</td>
-        <td class="dato">{{ m.cantidad }}</td>
+        <td class="dato">
+          {% if m.ingreso_gasto == 'I' %}
+          Ingreso
+          {% else %}
+          Gasto
+          {% endif %}
+        </td>
+        <td class="dato numero">{{ m.cantidad }}</td>
       </tr>
       {% endfor %}
 
