@@ -33,10 +33,16 @@
       {% if movs %}
       {% for m in movs %}
       <tr class="fila">
-        <td class="dato">{{ m.fecha }}</td>
+        <td class="dato">
+          {% if m.fecha %}
+          {{ m.fecha }}
+          {% else %}
+          ---
+          {% endif %}
+        </td>
         <td class="dato">{{ m.concepto }}</td>
         <td class="dato">
-          {% if m.ingreso_gasto == 'I' %}
+          {% if m.tipo == 'I' %}
           Ingreso
           {% else %}
           Gasto
