@@ -45,6 +45,13 @@ header {
   color: #666666;
 }
 
+.tabla .error {
+  color: #b8174c;
+  font-size: small;
+  margin: 0 0 10px 0;
+  line-height: 1rem;
+}
+
 .footer {
   padding: 20px;
   border-top: solid thin #b8174c;

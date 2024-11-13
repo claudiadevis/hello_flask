@@ -50,6 +50,18 @@
         </td>
         <td class="dato numero">{{ m.cantidad }}</td>
       </tr>
+      {% if m.has_errors %}
+      <tr>
+        <td></td>
+        <td colspan="3">
+          <p class="error">
+            {% for error in m.errores %}
+            {{ error }}<br>
+            {% endfor %}
+          </p>
+        </td>
+      </tr>
+      {% endif %}
       {% endfor %}
       {% else %}
       <tr class="fila">
