@@ -39,6 +39,12 @@ header {
   text-align: right;
 }
 
+.tabla .lista-vacia {
+  text-align: center;
+  padding: 25px;
+  color: #666666;
+}
+
 .footer {
   padding: 20px;
   border-top: solid thin #b8174c;

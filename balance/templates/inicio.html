@@ -30,7 +30,7 @@
         <th class="cabecera">Tipo</th>
         <th class="cabecera">Cantidad</th>
       </tr>
-
+      {% if movs %}
       {% for m in movs %}
       <tr class="fila">
         <td class="dato">{{ m.fecha }}</td>
@@ -45,7 +45,11 @@
         <td class="dato numero">{{ m.cantidad }}</td>
       </tr>
       {% endfor %}
-
+      {% else %}
+      <tr class="fila">
+        <td class="lista-vacia" colspan="4">No hay movimientos</td>
+      </tr>
+      {% endif %}
     </table>
   </main>
 
