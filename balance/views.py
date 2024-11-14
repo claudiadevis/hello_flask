@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, request
 
 from .models import ListaMovimientos
 from . import app
@@ -14,12 +14,17 @@ def home():
     return render_template('inicio.html', movs=lista.movimientos)
 
 
-@app.route('/nuevo')
+@app.route('/nuevo', methods=['GET', 'POST'])
 def add_movement():
     """
     Crea un movimiento nuevo y lo guarda en el archivo CSV
     """
-    return render_template('nuevo.html')
+    if request.method == 'GET':
+        return render_template('nuevo.html')
+    if request.method == 'POST':
+        # TODO: crear un movimiento, agregarlo a la lista, guardar la lista y devolver el texto 'OK' (o 'ERROR' si falla)
+        # mov = Movimiento(request.form)
+        return request.form
 
 
 @app.route('/modificar')
