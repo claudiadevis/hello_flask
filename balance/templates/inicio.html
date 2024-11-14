@@ -1,77 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Balance - Lista de movimientos</title>
-  <link rel="stylesheet" href="static/css/flat-remix.css">
-  <link rel="stylesheet" href="static/css/styles.css">
-</head>
+{% block contenido %}
+<h1>Lista de movimientos</h1>
 
-<body>
-  <header>Balance de movimientos</header>
+<table class="paper tabla">
 
-  <nav class="navbar">
-    <a>Inicio</a>
-    |
-    <a href="/nuevo">Nuevo</a>
-  </nav>
-
-  <main class="main">
-
-    <h1>Lista de movimientos</h1>
-
-    <table class="paper tabla">
-
-      <tr class="fila">
-        <th class="cabecera fecha">Fecha</th>
-        <th class="cabecera">Concepto</th>
-        <th class="cabecera">Tipo</th>
-        <th class="cabecera">Cantidad</th>
-      </tr>
-      {% if movs %}
-      {% for m in movs %}
-      <tr class="fila">
-        <td class="dato">
-          {% if m.fecha %}
-          {{ m.fecha }}
-          {% else %}
-          ---
-          {% endif %}
-        </td>
-        <td class="dato">{{ m.concepto }}</td>
-        <td class="dato">
-          {% if m.tipo == 'I' %}
-          Ingreso
-          {% else %}
-          Gasto
-          {% endif %}
-        </td>
-        <td class="dato numero">{{ m.cantidad }}</td>
-      </tr>
-      {% if m.has_errors %}
-      <tr>
-        <td></td>
-        <td colspan="3">
-          <p class="error">
-            {% for error in m.errores %}
-            {{ error }}<br>
-            {% endfor %}
-          </p>
-        </td>
-      </tr>
-      {% endif %}
-      {% endfor %}
+  <tr class="fila">
+    <th class="cabecera fecha">Fecha</th>
+    <th class="cabecera">Concepto</th>
+    <th class="cabecera">Tipo</th>
+    <th class="cabecera">Cantidad</th>
+  </tr>
+  {% if movs %}
+  {% for m in movs %}
+  <tr class="fila">
+    <td class="dato">
+      {% if m.fecha %}
+      {{ m.fecha }}
       {% else %}
-      <tr class="fila">
-        <td class="lista-vacia" colspan="4">No hay movimientos</td>
-      </tr>
+      ---
       {% endif %}
-    </table>
-  </main>
-
-  <footer class="footer">KeepCoding Bootcamp Cero XXII. Noviembre 2024.</footer>
-</body>
-
-</html>
+    </td>
+    <td class="dato">{{ m.concepto }}</td>
+    <td class="dato">
+      {% if m.tipo == 'I' %}
+      Ingreso
+      {% else %}
+      Gasto
+      {% endif %}
+    </td>
+    <td class="dato numero">{{ m.cantidad }}</td>
+  </tr>
+  {% if m.has_errors %}
+  <tr>
+    <td></td>
+    <td colspan="3">
+      <p class="error">
+        {% for error in m.errores %}
+        {{ error }}<br>
+        {% endfor %}
+      </p>
+    </td>
+  </tr>
+  {% endif %}
+  {% endfor %}
+  {% else %}
+  <tr class="fila">
+    <td class="lista-vacia" colspan="4">No hay movimientos</td>
+  </tr>
+  {% endif %}
+</table>
+{% endblock contenido %}
