@@ -26,6 +26,9 @@ class Movimiento:
     def __str__(self):
         return f'{self.fecha} | {self.concepto} | {self.tipo} | {self.cantidad}'
 
+    def __repr__(self):
+        return self.__str__()
+
 
 class ListaMovimientos:
     def __init__(self):
@@ -43,6 +46,23 @@ class ListaMovimientos:
                     fila.get('cantidad', 0)
                 )
                 self.movimientos.append(movimiento)
+
+    def guardar(self):
+        with open(RUTA_FICHERO, 'w') as fichero:
+            # cabeceras = ['fecha', 'concepto', 'ingreso_gasto', 'cantidad']
+            # writer = csv.writer(fichero)
+            # writer.writerow(cabeceras)
+
+            cabeceras = list(self.movimientos[0].__dict__.keys())
+            cabeceras.remove('errores')
+
+            writer = csv.DictWriter(fichero, fieldnames=cabeceras)
+            writer.writeheader()
+
+            for mov in self.movimientos:
+                mov_dict = mov.__dict__
+                mov_dict.pop('errores')
+                writer.writerow(mov_dict)
 
     def __str__(self):
         result = ''
