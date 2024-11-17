@@ -1,7 +1,5 @@
-fecha,concepto,tipo,cantidad
-2024-11-10,Libro de programaci贸n en Python,G,39.95
-2024-11-11,Libro de programaci贸n orientada a objetos,G,29.95
-2024-11-12,Bote de propinas,I,23
-2024-11-07,N髆ina,I,1000
-,prueba datos faltantes,,
-2024-11-14,segunda prueba n鷐ero negativo,G,0
+fecha,concepto,tipo,cantidad
+2024-11-10,Libro de programaci贸n en Python,G,39.95
+2024-11-11,Libro de programaci贸n orientada a objetos,G,29.95
+2024-11-12,Bote de propinas,I,23
+
