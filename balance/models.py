@@ -16,8 +16,20 @@ class Movimiento:
             self.errores.append(mensaje)
 
         self.concepto = concepto
-        self.tipo = tipo
-        self.cantidad = cantidad
+
+        if not (tipo == 'I' or tipo == 'G'):
+            self.tipo = None
+            mensaje = f'El tipo debe ser Ingreso o Gasto'
+            self.errores.append(mensaje)
+        else:
+            self.tipo = tipo
+
+        if not (float(cantidad) > 0):
+            self.cantidad = 0
+            mensaje = f'El valor {cantidad} no es un número positivo'
+            self.errores.append(mensaje)
+        else:
+            self.cantidad = cantidad
 
     @property
     def has_errors(self):
@@ -42,14 +54,14 @@ class ListaMovimientos:
                 movimiento = Movimiento(
                     fila.get('fecha', None),
                     fila.get('concepto', 'Varios'),
-                    fila.get('ingreso_gasto', '-'),
+                    fila.get('tipo', '-'),
                     fila.get('cantidad', 0)
                 )
                 self.movimientos.append(movimiento)
 
     def guardar(self):
         with open(RUTA_FICHERO, 'w') as fichero:
-            # cabeceras = ['fecha', 'concepto', 'ingreso_gasto', 'cantidad']
+            # cabeceras = ['fecha', 'concepto', 'tipo', 'cantidad']
             # writer = csv.writer(fichero)
             # writer.writerow(cabeceras)
 
@@ -63,6 +75,21 @@ class ListaMovimientos:
                 mov_dict = mov.__dict__
                 mov_dict.pop('errores')
                 writer.writerow(mov_dict)
+
+    def agregar_mov(self, mov):
+        print({mov})
+        fecha = str(mov.get('date'))
+        concepto = mov.get('subject')
+        tipo = mov.get('mov_type')
+        cantidad = float(mov.get('amount'))
+        nuevo_mov = Movimiento(fecha, concepto, tipo, cantidad)
+        self.movimientos.append(nuevo_mov)
+        if nuevo_mov.errores == []:
+            result = 'OK'
+        else:
+            result = f'Hay errores en la entrada de los datos: {
+                nuevo_mov.errores}'
+        return result
 
     def __str__(self):
         result = ''

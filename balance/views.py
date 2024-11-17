@@ -1,6 +1,6 @@
 from flask import render_template, request
 
-from .models import ListaMovimientos
+from .models import ListaMovimientos, Movimiento
 from . import app
 
 
@@ -22,9 +22,15 @@ def add_movement():
     if request.method == 'GET':
         return render_template('nuevo.html')
     if request.method == 'POST':
+        lista = ListaMovimientos()
         # TODO: crear un movimiento, agregarlo a la lista, guardar la lista y devolver el texto 'OK' (o 'ERROR' si falla)
-        # mov = Movimiento(request.form)
-        return request.form
+        mov = request.form
+
+        lista.leer_desde_archivo()
+        resultado = lista.agregar_mov(mov)
+        lista.guardar()
+
+        return resultado
 
 
 @app.route('/modificar')
