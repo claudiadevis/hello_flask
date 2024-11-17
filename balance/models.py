@@ -12,7 +12,8 @@ class Movimiento:
             self.fecha = date.fromisoformat(fecha)
         except ValueError:
             self.fecha = None
-            mensaje = f'La fecha {fecha} no es una fecha ISO 8601 válida'
+            mensaje = f'La fecha {
+                fecha} no es una fecha ISO 8601 válida (o no se ha agregado ninguna fecha)'
             self.errores.append(mensaje)
 
         self.concepto = concepto
@@ -24,7 +25,10 @@ class Movimiento:
         else:
             self.tipo = tipo
 
-        if not (float(cantidad) > 0):
+        if (cantidad == ''):
+            mensaje = 'No se ha agregado ninguna cantidad'
+            self.errores.append(mensaje)
+        elif not (float(cantidad) >= 0):
             self.cantidad = 0
             mensaje = f'El valor {cantidad} no es un número positivo'
             self.errores.append(mensaje)
@@ -77,17 +81,17 @@ class ListaMovimientos:
                 writer.writerow(mov_dict)
 
     def agregar_mov(self, mov):
-        print({mov})
+        # print({mov})
         fecha = str(mov.get('date'))
         concepto = mov.get('subject')
         tipo = mov.get('mov_type')
-        cantidad = float(mov.get('amount'))
+        cantidad = mov.get('amount')
         nuevo_mov = Movimiento(fecha, concepto, tipo, cantidad)
         self.movimientos.append(nuevo_mov)
         if nuevo_mov.errores == []:
             result = 'OK'
         else:
-            result = f'Hay errores en la entrada de los datos: {
+            result = f'ERROR: {
                 nuevo_mov.errores}'
         return result
 
